@@ -5,7 +5,7 @@ import ImageLinkForm from './components/imagelinkform/ImageLinkForm';
 import Rank from './components/rank/Rank';
 import FaceRecognition from './components/facerecognition/FaceRecognition';
 import { useState } from 'react';
-import Clarifai from 'clarifai'
+import Clarifai from 'clarifai';
 import Signin from './components/signin/Signin';
 import Register from './components/register/Register';
 import ParticlesBg from 'particles-bg'
@@ -30,7 +30,7 @@ function App() {
   })
 
   const app = new Clarifai.App({
-    apiKey: '3aa21a5505aa44d192266420debe9bb2'
+    apiKey: 'd942e9247d064cd19440e7e0f5a4b4cf'
    });
 
   function calculateCoordinates(data){
@@ -60,12 +60,16 @@ function App() {
   let onSubmit = ()=>{
     setImageURL(input);
     app.models
-    .predict(
-      Clarifai.FACE_DETECT_MODEL,
-      input)
+      .predict(
+        {
+          id: 'face-detection',
+          name: 'face-detection',
+          version: '6dc7e46bc9124c5c8824be4822abe105',
+          type: 'visual-detector',
+        }, input)
     .then(response => {
       if(response){
-        fetch('https://agile-brushlands-26873.herokuapp.com/image',{
+        fetch('https://smart-brain-api-production-8feb.up.railway.app/image',{
           method: 'put',
           headers: {
             'Content-Type': 'application/json',

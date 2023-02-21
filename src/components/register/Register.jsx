@@ -19,7 +19,7 @@ const Register = ({onRouteChange, loadUser}) => {
   }
 
   let onSubmit = ()=>{
-    fetch('https://agile-brushlands-26873.herokuapp.com/register',{
+    fetch('https://smart-brain-api-production-8feb.up.railway.app/register',{
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

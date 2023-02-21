@@ -15,11 +15,11 @@ const Signin = ({onRouteChange, loadUser}) => {
   }
 
   let onSubmit = ()=>{
-    fetch('https://agile-brushlands-26873.herokuapp.com/signin',{
+    fetch('https://smart-brain-api-production-8feb.up.railway.app/signin',{
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
-        'accept': 'application/json'
+        'Accept': 'application/json'
       },
       body: JSON.stringify({
         email: emaill,
